@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>CNI Server Utilization</title>
+        <title>Server Utilization</title>
 
         <!-- Load c3.css -->
         <link href="c3-0.4.10/c3.css" rel="stylesheet" type="text/css">
@@ -234,7 +234,7 @@
         </div>
         <div id='main'>
             <div id='main_cpu'>
-                <h2 style='text-align:center;'>CNI Server CPU Utilization</h2>
+                <h2 style='text-align:center;'>Server CPU Utilization</h2>
                 <div style='position: relative; line-height: 2; margin:auto; width:70%; text-align: center;'>
                     <div id='chart_waiting' style='width: 100%; position: absolute; top:0; left: 0;'><br><br><i>Retrieving Data ...<br></i><img src='loading.gif' width='60px'></div>
                     <div style='position: absolute; top:0; left: 0;' id="chart"></div>
@@ -243,7 +243,7 @@
                     <div style='padding: 0px; display: inline-block;' id='legend_left'></div><div  style='padding: 0px; display: inline-block;' id="legend"></div>
                 </div>
             </div><div id='main_gpu'>
-                <h2 style='text-align:center;'>CNI Server GPU Memory Utilization</h2>
+                <h2 style='text-align:center;'>Server GPU Memory Utilization</h2>
                 <div style='position: relative; line-height: 2; margin:auto; width:70%; text-align: center;'>
                     <div id='chart_waiting_gpu' style='width: 100%; position: absolute; top:0; left: 0;'><br><br><i>Retrieving Data ...<br></i><img src='loading.gif' width='60px'></div>
                     <div style='position: absolute; top:0; left: 0;' id="chart_gpu"></div>
