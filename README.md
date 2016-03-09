@@ -1,5 +1,5 @@
 # CPU_Usage_Plotter
-This is a little PhP script that I wrote for our Institute. It plots the CPU Utilization and GPU Memory Usage for all our Server in a nice Bar Diagram. Changes are detected every 15 seconds and thanks to the nice C3 Library very fluent.
+This is a little PhP script that I wrote for our Institute. It plots the CPU Utilization and GPU Memory Usage for all our Server in a nice Bar Diagram. Changes are detected every 15 seconds and thanks to the nice C3 Library plotted very fluent.
 
 ![alt tag](https://raw.githubusercontent.com/cpoetter/CPU_Usage_Plotter/master/Screenshot.png)
 
