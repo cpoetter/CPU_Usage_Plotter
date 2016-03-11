@@ -70,8 +70,11 @@
         $memory =intval($memory_used/$memory_total*100);
     }
 
-
     $client->disconnect();
+
+    // Cut string of too long at the beginning
+    $process = strlen($process) > 10 ? "...".substr($process, -10) : $process;
+    $user = strlen($user) > 10 ? "...".substr($user, -10) : $user;
 
     echo json_encode(array("cpu" => $cpu_usage, "user" => $user, "process" => $process, "gpu" => $gpu_usage, "gpu_memory" => $gpu_memory, "memory" => $memory));
 ?>      

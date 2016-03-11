@@ -19,7 +19,6 @@
                 padding: 0px;
                 margin: 0px;
                 background-color: #eeeeee;
-                overflow-x: hidden;
             }
 
             .c3-legend-item, .c3-axis-x-label, .c3-axis-y-label, .c3-axis-x {
@@ -71,7 +70,9 @@
                 padding: 0px;
                 margin: 0px;
                 margin-top: 60px;
+                padding-bottom: 25px;
             }
+            
         </style>
 
         <script type="text/javascript">
@@ -183,11 +184,10 @@
 
             function redraw() {
                 document.getElementById("chart_waiting").style.display = "none";
-                document.getElementById('legend').innerHTML = "";
-                document.getElementById('legend_left').innerHTML = "<div style='border-bottom: 1px solid gray; border-right: 1px solid gray;'>&nbsp;</div><div style='padding: 10px;  padding-left: 15px; padding-right:15px; border-right: 1px solid gray;'><font color='#2077B4'><b>User</b></font><br><font color='#2077B4'><b>Process</b></font></div>";                
+                document.getElementById('legend').innerHTML = "<div style='border-right: 1px solid gray; padding: 0px; display: inline-block;'><div style='border-bottom: 1px solid gray;'><font color='#2077B4'><b>&nbsp;</b></font></div><div style='padding: 10px; padding-left: 10px; padding-right:10px;'><font color='#2077B4'><b>User</b></font><br><font color='#2077B4'><b>Process</b></font></div></div>";
                 
                 for(var i = 0; i < cpu.length; i++) {
-                    document.getElementById('legend').innerHTML = document.getElementById('legend').innerHTML + "<div style='padding: 0px; display: inline-block;'><div style='border-bottom: 1px solid gray;'><font color='#2077B4'><b>" + server_names[i] + "</b></font></div><div style='padding: 10px; padding-left: 15px; padding-right:15px;'>" + user[i] + "<br>" + process[i] + "</div></div>";
+                    document.getElementById('legend').innerHTML = document.getElementById('legend').innerHTML + "<div style='padding: 0px; display: inline-block;'><div class='ellipsis' style='padding-left: 10px; padding-right: 10px; border-bottom: 1px solid gray;'><font color='#2077B4'><b>" + server_names[i] + "</b></font></div><div style='padding: 10px; padding-left: 10px; padding-right:10px;'>" + user[i] + "<br>" + process[i] + "</div></div>";
                 }
                 
                 chart.load({
@@ -212,15 +212,15 @@
         </div>
         <div id='footer'>
             <small>This website updates its content every 15 sec</small>
-            <div style='margin-right: 4px; position: absolute; bottom: 10px; right: 10px;'><small>Version 0.2</small></div>
+            <div style='margin-right: 4px; position: absolute; bottom: 10px; right: 10px;'><small>Version 0.21</small></div>
         </div>
         <div id='main'>
             <div style='padding-bottom: 20px; position: relative; line-height: 2; margin:auto; width:85%; text-align: center;'>
-                <div id='chart_waiting' style='width: 100%; position: absolute; top:0; left: 0;'><br><br><i>Retrieving Data ...<br></i><img src='loading.gif' width='60px'></div>
+                <div id='chart_waiting' style='width: 100%; position: absolute; top:0; left: 0;'><br><br><i>Retrieving Data<br></i><img src='loading.gif' width='60px'></div>
                 <div style='position: absolute; top:0; left: 0;' id="chart"></div>
             </div>
-            <div style='line-height: 2; margin:auto; text-align: center;' id="legend_main">
-                <div style='padding: 0px; display: inline-block;' id='legend_left'></div><div  style='padding: 0px; display: inline-block;' id="legend"></div>
+            <div style='margin: auto; width: 95%;  line-height: 2; text-align: center; '>
+                <div id="legend"></div>
             </div>
         </div>
     </body>
