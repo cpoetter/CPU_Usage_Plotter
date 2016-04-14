@@ -10,7 +10,7 @@
     include('Net/SSH2.php');
 
     $client = new Net_SSH2($server, 22);
-    if (!$client->login("<<Username>>", "<<Password>>")) {
+    if (!$client->login("cpoetter", "d8-j2K-Dz7")) {
         exit('Login Failed');
     }
 
@@ -39,7 +39,11 @@
         $gpu_usages = array_fill(0, $number_gpus, 0);
         
         for($i = 0; $i < $number_gpus; $i++) {
-            $gpu_memories[$i] = trim($client->exec("nvidia-smi -q -g $i 2>&1 | grep -A 2 -i utilization | grep -i memory | tail -1 | awk '{print $3}' | sed s/\%//g"));
+            //$gpu_memories[$i] = trim($client->exec("nvidia-smi -q -g $i 2>&1 | grep -A 2 -i utilization | grep -i memory | tail -1 | awk '{print $3}' | sed s/\%//g"));
+            $gpu_memories_mib = trim($client->exec("nvidia-smi -q -g $i 2>&1 | grep -A 2 -i 'FB Memory Usage' | grep Used | awk '{print $3}'"));
+            $gpu_memories_mib_total = trim($client->exec("nvidia-smi -q -g $i 2>&1 | grep -A 2 -i 'FB Memory Usage' | grep Total | awk '{print $3}'"));
+            $gpu_memories[$i] = $gpu_memories_mib/$gpu_memories_mib_total*100;
+            
             $gpu_usages[$i] = trim($client->exec("nvidia-smi -q -g $i 2>&1 | grep -A 2 -i utilization | grep -i Gpu | tail -1 | awk '{print $3}' | sed s/\%//g"));
         }
 
@@ -62,7 +66,7 @@
     }
 
     if(is_numeric($cpu_usage) == FALSE) {
-        $gpu_usage = 0;
+        $cpu_usage = 0;
     }
 
     $memory = 0;
